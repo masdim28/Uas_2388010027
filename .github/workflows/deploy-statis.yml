@@ -22,7 +22,7 @@ jobs:
       - name: Build Image
         run: |
           docker build \
-          -t masdim27/statis-2388010027:latest \
+          -t masdimas27/statis-2388010027:latest \
           ./web-statis
 
       - name: Push Image
