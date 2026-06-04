@@ -1,0 +1,26 @@
+name: Deploy Laravel
+
+on:
+  push:
+    paths:
+      - 'web-dinamis/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build Laravel
+      run: |
+        docker build -t masdim27/dinamis-2388010027:latest ./web-dinamis
+
+    - name: Push Laravel
+      run: |
+        docker push masdim27/dinamis-2388010027:latest
