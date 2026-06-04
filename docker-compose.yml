@@ -1,34 +1,29 @@
-services:
+version: '3.8'
 
+services:
   mariadb:
     image: mariadb:11
     container_name: mariadb
-
     restart: always
-
     environment:
       MYSQL_ROOT_PASSWORD: root123
       MYSQL_DATABASE: adeafwa_boutique
       MYSQL_USER: uas_2388010027
       MYSQL_PASSWORD: Masdimas2811
-
     volumes:
       - mariadb_data:/var/lib/mysql
       - ./database/adeafwa_boutique.sql:/docker-entrypoint-initdb.d/init.sql
-
     networks:
       - uas-network
 
   laravel:
     image: masdimas27/dinamis-2388010027:latest
-
     container_name: laravel
-
     restart: always
-
     depends_on:
       - mariadb
-
+    ports:
+      - "8000:8000"
     environment:
       DB_CONNECTION: mysql
       DB_HOST: mariadb
@@ -36,20 +31,15 @@ services:
       DB_DATABASE: adeafwa_boutique
       DB_USERNAME: uas_2388010027
       DB_PASSWORD: Masdimas2811
-
     networks:
       - uas-network
 
   web-statis:
     image: masdimas27/statis-2388010027:latest
-
     container_name: web-statis
-
     restart: always
-
     ports:
       - "80:80"
-
     networks:
       - uas-network
 
@@ -58,3 +48,4 @@ volumes:
 
 networks:
   uas-network:
+    driver: bridge
