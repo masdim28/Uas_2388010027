@@ -28,3 +28,15 @@ jobs:
       - name: Push Image
         run: |
           docker push masdimas27/statis-2388010027:latest
+
+      - name: Deploy EC2
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd ~/uas
+            docker pull masdimas27/statis-2388010027:latest
+            docker compose down
+            docker compose up -d
