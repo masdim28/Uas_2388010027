@@ -27,4 +27,4 @@ jobs:
 
       - name: Push Image
         run: |
-          docker push masdim27/statis-2388010027:latest
+          docker push masdimas27/statis-2388010027:latest

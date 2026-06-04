@@ -22,9 +22,9 @@ jobs:
       - name: Build Image
         run: |
           docker build \
-          -t masdim27/dinamis-2388010027:latest \
+          -t masdimas27/dinamis-2388010027:latest \
           ./web-dinamis
 
       - name: Push Image
         run: |
-          docker push masdim27/dinamis-2388010027:latest
+          docker push masdimas27/dinamis-2388010027:latest

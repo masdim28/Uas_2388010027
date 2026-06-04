@@ -20,7 +20,7 @@ services:
       - uas-network
 
   laravel:
-    image: masdim27/dinamis-2388010027:latest
+    image: masdimas27/dinamis-2388010027:latest
 
     container_name: laravel
 
@@ -41,7 +41,7 @@ services:
       - uas-network
 
   web-statis:
-    image: masdim27/statis-2388010027:latest
+    image: masdimas27/statis-2388010027:latest
 
     container_name: web-statis
 
