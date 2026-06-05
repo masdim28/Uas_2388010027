@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,25 +9,55 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
-        .gradient-bg { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
-        
-        @keyframes glitch {
-            0% { transform: translate(0) }
-            20% { transform: translate(-2px, 2px) }
-            40% { transform: translate(-2px, -2px) }
-            60% { transform: translate(2px, 2px) }
-            80% { transform: translate(2px, -2px) }
-            100% { transform: translate(0) }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
         }
-        .animate-glitch { animation: glitch 0.3s infinite; }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+
+        @keyframes glitch {
+            0% {
+                transform: translate(0)
+            }
+
+            20% {
+                transform: translate(-2px, 2px)
+            }
+
+            40% {
+                transform: translate(-2px, -2px)
+            }
+
+            60% {
+                transform: translate(2px, 2px)
+            }
+
+            80% {
+                transform: translate(2px, -2px)
+            }
+
+            100% {
+                transform: translate(0)
+            }
+        }
+
+        .animate-glitch {
+            animation: glitch 0.3s infinite;
+        }
     </style>
 </head>
+
 <body class="bg-slate-50 text-slate-800">
 
-    <div id="certModal" class="fixed inset-0 bg-black/90 hidden z-50 flex items-center justify-center p-4 transition-all">
+    <div id="certModal"
+        class="fixed inset-0 bg-black/90 hidden z-50 flex items-center justify-center p-4 transition-all">
         <div class="relative max-w-4xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-white bg-red-500 hover:bg-red-600 w-10 h-10 rounded-full z-10 flex items-center justify-center shadow-lg">
+            <button onclick="closeModal()"
+                class="absolute top-4 right-4 text-white bg-red-500 hover:bg-red-600 w-10 h-10 rounded-full z-10 flex items-center justify-center shadow-lg">
                 <i class="fas fa-times text-xl"></i>
             </button>
             <div class="p-2 bg-slate-100 flex justify-center">
@@ -38,7 +69,8 @@
         </div>
     </div>
 
-    <div id="skillOverlay" class="fixed inset-0 pointer-events-none z-40 flex items-center justify-center hidden transition-all duration-500">
+    <div id="skillOverlay"
+        class="fixed inset-0 pointer-events-none z-40 flex items-center justify-center hidden transition-all duration-500">
         <div id="skillContent" class="text-white text-center p-8 rounded-3xl"></div>
     </div>
 
@@ -46,14 +78,13 @@
         <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8">
             <div class="relative">
                 <div class="w-40 h-40 rounded-full border-4 border-white shadow-xl overflow-hidden bg-slate-200">
-                    <img src="fotodimas.jpeg" alt="Dimas Adriansah" 
-                         class="w-full h-full rounded-full object-cover" 
-                         style="object-position: center 20%;"
-                         onerror="this.src='https://ui-avatars.com/api/?name=Dimas+Adriansah&size=200&background=0D8ABC&color=fff'">
+                    <img src="fotodimas.jpeg" alt="Dimas Adriansah" class="w-full h-full rounded-full object-cover"
+                        style="object-position: center 20%;"
+                        onerror="this.src='https://ui-avatars.com/api/?name=Dimas+Adriansah&size=200&background=0D8ABC&color=fff'">
                 </div>
             </div>
             <div class="text-center md:text-left">
-                <h1 class="text-4xl md:text-5xl font-bold mb-2 text-white">Dimas Adriansah</h1>
+                <h1 class="text-4xl md:text-5xl font-bold mb-2 text-white">Dimas Adriansah S.Kom</h1>
                 <p class="text-xl opacity-90 mb-4 text-blue-100">Cloud Engineer & IT Specialist</p>
                 <div class="flex flex-wrap justify-center md:justify-start gap-4 text-sm text-blue-50">
                     <span><i class="fas fa-id-badge mr-2"></i>NIM: 2388010027</span>
@@ -65,10 +96,12 @@
     </header>
 
     <main class="max-w-4xl mx-auto py-12 px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-        
+
         <div class="md:col-span-1 space-y-8">
             <section>
-                <h3 class="text-lg font-bold mb-4 uppercase tracking-wider text-blue-800 border-b-2 border-blue-200 pb-1">Kontak</h3>
+                <h3
+                    class="text-lg font-bold mb-4 uppercase tracking-wider text-blue-800 border-b-2 border-blue-200 pb-1">
+                    Kontak</h3>
                 <ul class="space-y-3 text-sm">
                     <li class="flex items-center gap-3">
                         <i class="fas fa-envelope text-blue-600 w-5"></i>
@@ -76,28 +109,33 @@
                     </li>
                     <li class="flex items-center gap-3">
                         <i class="fab fa-linkedin text-blue-600 w-5"></i>
-                        <a href="https://linkedin.com/in/dimasadriansah" target="_blank" class="hover:text-blue-600 transition-colors">linkedin.com/in/dimasadriansah</a>
+                        <a href="https://linkedin.com/in/dimasadriansah" target="_blank"
+                            class="hover:text-blue-600 transition-colors">linkedin.com/in/dimasadriansah</a>
                     </li>
                 </ul>
             </section>
 
             <section>
-                <h3 class="text-lg font-bold mb-4 uppercase tracking-wider text-blue-800 border-b-2 border-blue-200 pb-1">Sertifikasi</h3>
+                <h3
+                    class="text-lg font-bold mb-4 uppercase tracking-wider text-blue-800 border-b-2 border-blue-200 pb-1">
+                    Sertifikasi</h3>
                 <div class="space-y-4">
-                    <div onclick="showCert('Cybersecurity Career Starter Certification (CCSC)', 'ccsc.png')" 
-                         class="group bg-white p-4 rounded-lg shadow-sm border-l-4 border-orange-500 cursor-pointer hover:shadow-md hover:-translate-y-1 transition-all">
+                    <div onclick="showCert('Cybersecurity Career Starter Certification (CCSC)', 'ccsc.png')"
+                        class="group bg-white p-4 rounded-lg shadow-sm border-l-4 border-orange-500 cursor-pointer hover:shadow-md hover:-translate-y-1 transition-all">
                         <div class="flex justify-between items-start">
-                            <p class="font-bold text-sm text-slate-800 group-hover:text-orange-600 transition-colors">Cybersecurity Career Starter (CCSC)</p>
+                            <p class="font-bold text-sm text-slate-800 group-hover:text-orange-600 transition-colors">
+                                Cybersecurity Career Starter (CCSC)</p>
                             <i class="fas fa-search-plus text-[10px] text-slate-400"></i>
                         </div>
                         <p class="text-xs text-slate-500">Hack & Fix Academy — Maret 2026</p>
                         <p class="text-[10px] text-orange-600 mt-1 font-mono uppercase">ID: 2058-9638-5960-6289</p>
                     </div>
 
-                    <div onclick="showCert('HCIA-AI V4.0 (Artificial Intelligence)', 'HCIA.png')" 
-                         class="group bg-white p-4 rounded-lg shadow-sm border-l-4 border-blue-500 cursor-pointer hover:shadow-md hover:-translate-y-1 transition-all">
+                    <div onclick="showCert('HCIA-AI V4.0 (Artificial Intelligence)', 'HCIA.png')"
+                        class="group bg-white p-4 rounded-lg shadow-sm border-l-4 border-blue-500 cursor-pointer hover:shadow-md hover:-translate-y-1 transition-all">
                         <div class="flex justify-between items-start">
-                            <p class="font-bold text-sm text-slate-800 group-hover:text-blue-600 transition-colors">HCIA-AI V4.0</p>
+                            <p class="font-bold text-sm text-slate-800 group-hover:text-blue-600 transition-colors">
+                                HCIA-AI V4.0</p>
                             <i class="fas fa-search-plus text-[10px] text-slate-400"></i>
                         </div>
                         <p class="text-xs text-slate-500">Huawei ICT Academy — Nov 2025</p>
@@ -107,13 +145,23 @@
             </section>
 
             <section>
-                <h3 class="text-lg font-bold mb-4 uppercase tracking-wider text-blue-800 border-b-2 border-blue-200 pb-1">Keahlian</h3>
+                <h3
+                    class="text-lg font-bold mb-4 uppercase tracking-wider text-blue-800 border-b-2 border-blue-200 pb-1">
+                    Keahlian</h3>
                 <div class="flex flex-wrap gap-2">
-                    <button onclick="playSkillAnim('CLOUD')" class="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs font-semibold uppercase hover:bg-blue-600 hover:text-white transition-all">Cloud Computing</button>
-                    <button onclick="playSkillAnim('CYBER')" class="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs font-semibold uppercase hover:bg-green-600 hover:text-white transition-all">Cybersecurity</button>
-                    <button onclick="playSkillAnim('AI')" class="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs font-semibold uppercase hover:bg-purple-600 hover:text-white transition-all">Artificial Intelligence</button>
-                    <button onclick="playSkillAnim('NGINX')" class="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs font-semibold uppercase hover:bg-slate-700 hover:text-white transition-all">Nginx</button>
-                    <button onclick="playSkillAnim('LINUX')" class="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs font-semibold uppercase hover:bg-slate-700 hover:text-white transition-all">Linux Admin</button>
+                    <button onclick="playSkillAnim('CLOUD')"
+                        class="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs font-semibold uppercase hover:bg-blue-600 hover:text-white transition-all">Cloud
+                        Computing</button>
+                    <button onclick="playSkillAnim('CYBER')"
+                        class="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs font-semibold uppercase hover:bg-green-600 hover:text-white transition-all">Cybersecurity</button>
+                    <button onclick="playSkillAnim('AI')"
+                        class="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs font-semibold uppercase hover:bg-purple-600 hover:text-white transition-all">Artificial
+                        Intelligence</button>
+                    <button onclick="playSkillAnim('NGINX')"
+                        class="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs font-semibold uppercase hover:bg-slate-700 hover:text-white transition-all">Nginx</button>
+                    <button onclick="playSkillAnim('LINUX')"
+                        class="bg-blue-100 text-blue-700 px-3 py-1 rounded-md text-xs font-semibold uppercase hover:bg-slate-700 hover:text-white transition-all">Linux
+                        Admin</button>
                 </div>
             </section>
         </div>
@@ -124,7 +172,10 @@
                     <i class="fas fa-user-tie"></i> Tentang Saya
                 </h2>
                 <p class="text-slate-600 leading-relaxed text-justify">
-                    Saya adalah mahasiswa Teknik Informatika yang berfokus pada administrasi server, keamanan siber, dan infrastruktur cloud. Memiliki sertifikasi profesional di bidang Cybersecurity dan AI, serta pengalaman dalam membangun sistem terintegrasi mulai dari aplikasi web hingga solusi Internet of Things (IoT).
+                    Saya adalah mahasiswa Teknik Informatika yang berfokus pada administrasi server, keamanan siber, dan
+                    infrastruktur cloud. Memiliki sertifikasi profesional di bidang Cybersecurity dan AI, serta
+                    pengalaman dalam membangun sistem terintegrasi mulai dari aplikasi web hingga solusi Internet of
+                    Things (IoT).
                 </p>
             </section>
 
@@ -137,14 +188,17 @@
                         <div class="absolute -left-[9px] top-0 w-4 h-4 bg-blue-500 rounded-full"></div>
                         <h4 class="font-bold text-lg text-slate-800">Web & Mobile App Development</h4>
                         <p class="text-sm text-slate-600 mb-2">Fullstack Developer</p>
-                        <p class="text-sm text-slate-500 text-justify">Merancang aplikasi responsif untuk manajemen data dan interaksi pengguna real-time dengan fokus pada skalabilitas server.</p>
+                        <p class="text-sm text-slate-500 text-justify">Merancang aplikasi responsif untuk manajemen data
+                            dan interaksi pengguna real-time dengan fokus pada skalabilitas server.</p>
                     </div>
 
                     <div class="relative pl-6 border-l-2 border-blue-500">
                         <div class="absolute -left-[9px] top-0 w-4 h-4 bg-blue-500 rounded-full"></div>
                         <h4 class="font-bold text-lg text-slate-800">IoT Solution: Smart Farming & Housing</h4>
                         <p class="text-sm text-slate-600 mb-2">Hardware & Networking Specialist</p>
-                        <p class="text-sm text-slate-500 text-justify">Mengembangkan sistem pemantauan otomatis di bidang pertanian dan perumahan pintar menggunakan sensor terintegrasi untuk meningkatkan efisiensi operasional.</p>
+                        <p class="text-sm text-slate-500 text-justify">Mengembangkan sistem pemantauan otomatis di
+                            bidang pertanian dan perumahan pintar menggunakan sensor terintegrasi untuk meningkatkan
+                            efisiensi operasional.</p>
                     </div>
                 </div>
             </section>
@@ -162,29 +216,29 @@
                     <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
                         <p class="font-bold text-lg">Pendidikan Menengah Atas</p>
                         <p class="text-blue-600 text-sm">SMAN 1 Mandirancan </p>
-                         <p class="text-sm text-slate-400">2019 - 2021</p>
+                        <p class="text-sm text-slate-400">2019 - 2021</p>
                     </div>
                     <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
 
-            <p class="font-bold text-lg">Pendidikan Menengah Pertama</p>
+                        <p class="font-bold text-lg">Pendidikan Menengah Pertama</p>
 
-            <p class="text-blue-600">MTs Bani Karim</p>
+                        <p class="text-blue-600">MTs Bani Karim</p>
 
-            <p class="text-sm text-slate-400">2015 - 2018</p>
+                        <p class="text-sm text-slate-400">2015 - 2018</p>
 
-        </div>
+                    </div>
 
 
 
-        <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
+                    <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
 
-            <p class="font-bold text-lg">Pendidikan Dasar</p>
+                        <p class="font-bold text-lg">Pendidikan Dasar</p>
 
-            <p class="text-blue-600">SDN 1 Tenjolayar</p>
+                        <p class="text-blue-600">SDN 1 Tenjolayar</p>
 
-            <p class="text-sm text-slate-400">2009 - 2015</p>
+                        <p class="text-sm text-slate-400">2009 - 2015</p>
 
-        </div>
+                    </div>
                 </div>
             </section>
         </div>
@@ -219,8 +273,8 @@
             const overlay = document.getElementById('skillOverlay');
             const content = document.getElementById('skillContent');
             overlay.classList.remove('hidden');
-            
-            if(type === 'CYBER') {
+
+            if (type === 'CYBER') {
                 overlay.style.backgroundColor = 'rgba(0, 25, 0, 0.95)';
                 content.innerHTML = `
                     <div class="animate-glitch text-green-500 text-7xl mb-4"><i class="fas fa-user-shield"></i></div>
@@ -228,7 +282,7 @@
                     <p class="text-green-600 font-mono mt-4">>> Security ID: 2388010027 Verified</p>
                     <p class="text-green-700 font-mono text-xs">Status: System Secure</p>
                 `;
-            } else if(type === 'AI') {
+            } else if (type === 'AI') {
                 overlay.style.backgroundColor = 'rgba(20, 0, 50, 0.95)';
                 content.innerHTML = `
                     <div class="animate-spin text-purple-400 text-7xl mb-6" style="animation-duration: 4s"><i class="fas fa-brain"></i></div>
@@ -246,7 +300,8 @@
             setTimeout(() => { overlay.classList.add('hidden'); }, 1500);
         }
 
-        window.onclick = function(e) { if (e.target.id == 'certModal') closeModal(); }
+        window.onclick = function (e) { if (e.target.id == 'certModal') closeModal(); }
     </script>
 </body>
+
 </html>
