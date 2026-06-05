@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Checkout - Ade Afwa Boutique</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -324,6 +325,7 @@
 
                                 <option value="jne">JNE</option>
                                 <option value="pos">POS Indonesia</option>
+                                <option value="jnt">J&T Express</option>
 
                             </select>
 
@@ -462,6 +464,13 @@
 
     <script>
 
+        // Setup CSRF token for all AJAX requests
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
         // Concatenate address inputs to details text area
         function combineAddressDetails() {
             const jalan = document.getElementById('input_jalan').value.trim();
@@ -559,9 +568,14 @@
 
                 error: function(xhr) {
                     $('#search-loading').addClass('hidden').removeClass('flex');
-                    console.error('Error search destination:', xhr.responseText);
+                    console.error('Error search destination:', xhr.status, xhr.responseText);
+                    let errDetail = 'Gagal mencari lokasi. Coba lagi.';
+                    try {
+                        let errJson = JSON.parse(xhr.responseText);
+                        if (errJson.meta && errJson.meta.message) errDetail = errJson.meta.message;
+                    } catch(e) {}
                     $('#destination-results')
-                        .html('<div class="px-4 py-3 text-xs text-red-400 text-center">⚠️ Gagal mencari lokasi. Coba lagi.</div>')
+                        .html('<div class="px-4 py-3 text-xs text-red-400 text-center">⚠️ ' + errDetail + '</div>')
                         .removeClass('hidden');
                 }
             });
@@ -675,8 +689,13 @@
                 error: function(xhr) {
                     console.error('[Ongkir] Error:', xhr.status, xhr.responseText);
                     $('#btn-hitung-ongkir').prop('disabled', false).text('Hitung Ongkir');
-                    $('#service-select').html('<option value="">⚠️ Gagal menghitung ongkir.</option>');
-                    alert('Gagal menghitung ongkir. Periksa koneksi internet Anda.');
+                    let errMsg = 'Gagal menghitung ongkir.';
+                    try {
+                        let errJson = JSON.parse(xhr.responseText);
+                        if (errJson.meta && errJson.meta.message) errMsg = errJson.meta.message;
+                    } catch(e) {}
+                    $('#service-select').html('<option value="">⚠️ ' + errMsg + '</option>');
+                    alert(errMsg + ' Periksa koneksi internet Anda.');
                 }
             });
         }
