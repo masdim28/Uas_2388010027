@@ -22,7 +22,14 @@ COPY . .
 
 RUN composer install --no-dev --optimize-autoloader
 
-RUN cp .env.example .env && php artisan key:generate
+RUN cp .env.example .env && \
+    echo "DB_CONNECTION=mysql" >> .env && \
+    echo "DB_HOST=mariadb" >> .env && \
+    echo "DB_PORT=3306" >> .env && \
+    echo "DB_DATABASE=adeafwa_boutique" >> .env && \
+    echo "DB_USERNAME=uas_2388010027" >> .env && \
+    echo "DB_PASSWORD=Masdimas2811" >> .env && \
+    php artisan key:generate
 
 RUN npm install
 RUN npm run build
