@@ -271,7 +271,7 @@
                 <div class="flex flex-col items-center md:items-start">
                     <img src="{{ asset('images/logo_adeafwa.png') }}" alt="Logo" class="h-12 mb-4">
                     <p class="text-sm text-gray-700 font-serif-ade font-bold tracking-wider uppercase">Ade Afwa Boutique</p>
-                    <p class="text-xs text-gray-500 mt-2 text-center md:text-left max-w-sm">Koleksi pakaian elegan dengan kualitas terbaik untuk menemani momen spesial Anda.</p>
+                    <p class="text-xs text-gray-500 mt-2 text-center md:text-left max-w-sm">Dimas Adriansah 2388010027</p>
                 </div>
                 
                 <!-- Store Information -->
