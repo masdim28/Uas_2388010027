@@ -147,7 +147,7 @@
 
                 <div class="space-y-2">
                     <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Nomor WhatsApp</label>
-                    <input type="text" name="phone" value="{{ Auth::user()->phone }}" class="w-full border-b-2 border-gray-100 py-2 outline-none focus:border-ade-gold transition-colors font-medium text-gray-700">
+                    <input type="text" name="phone" value="{{ Auth::user()->phone }}" pattern="^\+62[0-9]{8,13}$" title="Nomor telepon harus diawali dengan +62" class="w-full border-b-2 border-gray-100 py-2 outline-none focus:border-ade-gold transition-colors font-medium text-gray-700">
                 </div>
 
                 <div class="space-y-2">

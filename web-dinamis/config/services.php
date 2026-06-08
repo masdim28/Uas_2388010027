@@ -35,10 +35,4 @@ return [
         ],
     ],
 
-    'komerce' => [
-        'base_url' => env('KOMERCE_BASE_URL', 'https://rajaongkir.komerce.id/api/v1'),
-        'api_key'  => env('KOMERCE_API_KEY'),
-        'origin'   => env('KOMERCE_ORIGIN'),
-    ],
-
 ];

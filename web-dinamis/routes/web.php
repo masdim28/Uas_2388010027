@@ -111,7 +111,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     
     Route::get('/pesanan-selesai', [OrderController::class, 'selesai'])->name('orders.selesai');
     
-    // User Management// yaya saya suka
+    // User Management
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
     Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
     Route::post('/users', [UserController::class, 'store'])->name('users.store');

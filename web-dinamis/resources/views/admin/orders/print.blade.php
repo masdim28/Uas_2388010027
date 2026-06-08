@@ -70,7 +70,7 @@
         <div class="border-dashed-black pb-3 mb-3">
             <p class="text-[10px] font-bold mb-1">Pengirim:</p>
             <p class="text-xs font-black uppercase">Ade Afwa Boutique</p>
-            <p class="text-[10px]">087739877969</p>
+            <p class="text-[10px]">+6287862331538</p>
         </div>
 
         <!-- DETAIL ITEM -->

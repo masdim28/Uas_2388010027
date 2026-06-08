@@ -55,9 +55,9 @@
                             $isSoldOut = $item->product->status == 'sold_out' || ($item->variant && $item->variant->stock <= 0); 
                         @endphp
                         
-                        <div class="flex items-center p-6 md:p-8 border-b border-gray-50 {{ $isSoldOut ? 'bg-gray-50' : 'hover:bg-[#F1FBFD]/30' }} transition duration-300">
+                        <div class="flex items-center p-4 sm:p-6 md:p-8 border-b border-gray-50 {{ $isSoldOut ? 'bg-gray-50' : 'hover:bg-[#F1FBFD]/30' }} transition duration-300">
                             {{-- Checkbox Pemilihan --}}
-                            <div class="mr-6">
+                            <div class="mr-3 sm:mr-4 md:mr-6">
                                 @php
                                     $unitPrice = ($item->variant && $item->variant->price > 0) ? $item->variant->price : $item->product->price;
                                     $itemTotal = $unitPrice * $item->qty;
@@ -68,11 +68,11 @@
                                     {{ $isSoldOut ? 'disabled' : '' }}>
                             </div>
 
-                            <div class="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-6">
-                                <div class="flex items-center space-x-6">
+                            <div class="flex-1 flex flex-col md:flex-row md:items-center justify-between gap-4 md:gap-6 min-w-0">
+                                <div class="flex items-start md:items-center gap-3 md:gap-6 min-w-0">
                                     {{-- Thumbnail Produk --}}
                                     <div class="relative flex-shrink-0">
-                                        <img src="{{ asset('storage/' . $item->product->image) }}" alt="{{ $item->product->name }}" class="w-24 h-32 object-cover rounded-2xl shadow-sm {{ $isSoldOut ? 'grayscale' : '' }}">
+                                        <img src="{{ asset('storage/' . $item->product->image) }}" alt="{{ $item->product->name }}" class="w-20 h-28 md:w-24 md:h-32 object-cover rounded-xl md:rounded-2xl shadow-sm {{ $isSoldOut ? 'grayscale' : '' }}">
                                         @if($isSoldOut)
                                             <div class="absolute inset-0 bg-black/40 rounded-2xl flex items-center justify-center">
                                                 <span class="text-[10px] text-white font-black uppercase tracking-widest">Habis</span>
@@ -81,8 +81,8 @@
                                     </div>
 
                                     {{-- Info Produk & VARIAN --}}
-                                    <div>
-                                        <h4 class="font-bold text-gray-800 text-lg capitalize leading-tight mb-2">{{ $item->product->name }}</h4>
+                                    <div class="min-w-0 flex-1">
+                                        <h4 class="font-bold text-gray-800 text-base md:text-lg capitalize leading-tight mb-2 truncate">{{ $item->product->name }}</h4>
                                         
                                         {{-- DETAIL VARIAN YG DIPILIH --}}
                                         @if($item->variant)
@@ -97,17 +97,17 @@
                                         @endif
 
                                         @if($isSoldOut)
-                                            <p class="text-[10px] text-red-500 font-bold uppercase tracking-widest">Varian ini tidak lagi tersedia</p>
+                                            <p class="text-[9px] md:text-[10px] text-red-500 font-bold uppercase tracking-widest">Varian ini tidak tersedia</p>
                                         @else
-                                            <div class="flex items-center gap-3 mt-2">
-                                                <p class="text-[11px] text-gray-400 font-medium uppercase tracking-widest">Kuantitas:</p>
-                                                <div class="flex items-center border border-gray-200 rounded-full bg-white h-8">
-                                                    <button type="button" onclick="updateCartQty('{{ $item->id }}', -1)" class="w-8 h-full flex items-center justify-center text-gray-500 hover:text-[#CFB53B] transition-colors rounded-l-full focus:outline-none">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" /></svg>
+                                            <div class="flex flex-wrap items-center gap-2 md:gap-3 mt-2">
+                                                <p class="text-[9px] md:text-[11px] text-gray-400 font-medium uppercase tracking-widest">Kuantitas:</p>
+                                                <div class="flex items-center border border-gray-200 rounded-full bg-white h-7 md:h-8 flex-shrink-0">
+                                                    <button type="button" onclick="updateCartQty('{{ $item->id }}', -1)" class="w-7 md:w-8 h-full flex items-center justify-center text-gray-500 hover:text-[#CFB53B] transition-colors rounded-l-full focus:outline-none">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-2.5 w-2.5 md:h-3 md:w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" /></svg>
                                                     </button>
-                                                    <span class="w-8 text-center text-xs font-bold text-gray-800" id="qty-{{ $item->id }}">{{ $item->qty }}</span>
-                                                    <button type="button" onclick="updateCartQty('{{ $item->id }}', 1)" class="w-8 h-full flex items-center justify-center text-gray-500 hover:text-[#CFB53B] transition-colors rounded-r-full focus:outline-none">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
+                                                    <span class="w-6 md:w-8 text-center text-xs font-bold text-gray-800" id="qty-{{ $item->id }}">{{ $item->qty }}</span>
+                                                    <button type="button" onclick="updateCartQty('{{ $item->id }}', 1)" class="w-7 md:w-8 h-full flex items-center justify-center text-gray-500 hover:text-[#CFB53B] transition-colors rounded-r-full focus:outline-none">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-2.5 w-2.5 md:h-3 md:w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
                                                     </button>
                                                 </div>
                                             </div>
@@ -116,9 +116,9 @@
                                 </div>
 
                                 {{-- Harga & Tombol Hapus --}}
-                                <div class="text-right flex flex-col justify-between items-end">
+                                <div class="text-left md:text-right flex flex-row md:flex-col justify-between items-center md:items-end mt-4 md:mt-0 border-t border-gray-100 md:border-0 pt-4 md:pt-0">
                                     <div>
-                                        <p class="font-serif text-2xl font-bold {{ $isSoldOut ? 'text-gray-300 line-through' : 'text-[#CFB53B]' }}">
+                                        <p class="font-serif text-lg md:text-2xl font-bold {{ $isSoldOut ? 'text-gray-300 line-through' : 'text-[#CFB53B]' }}">
                                             Rp {{ number_format($itemTotal, 0, ',', '.') }}
                                         </p>
                                         @if(!$isSoldOut)
@@ -126,7 +126,7 @@
                                         @endif
                                     </div>
 
-                                    <button type="button" onclick="removeItem('{{ $item->id }}')" class="mt-4 text-[10px] text-red-300 hover:text-red-600 uppercase font-black tracking-[0.2em] transition-all flex items-center gap-1">
+                                    <button type="button" onclick="removeItem('{{ $item->id }}')" class="mt-0 md:mt-4 text-[10px] text-red-300 hover:text-red-600 uppercase font-black tracking-[0.2em] transition-all flex items-center gap-1">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                                         </svg>

@@ -125,6 +125,9 @@
                                     <span class="text-[10px] text-gray-500 font-medium leading-relaxed max-w-[220px] break-words mt-0.5">
                                         📍 {{ $order->address_details ?? '-' }}
                                     </span>
+                                    <span class="text-[10px] text-amber-600 font-bold mt-1 uppercase">
+                                        🚚 Jasa Kirim: {{ $order->courier ?? '-' }} {{ $order->service ? '('.$order->service.')' : '' }}
+                                    </span>
                                 </div>
                             </td>
 

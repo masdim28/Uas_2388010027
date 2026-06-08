@@ -37,7 +37,7 @@
                         <div class="flex flex-col items-center md:items-start">
                             <img src="{{ asset('images/logo_adeafwa.png') }}" alt="Logo" class="h-12 mb-4">
                             <p class="text-sm text-gray-700 font-semibold tracking-wider uppercase" style="font-family: 'Playfair Display', serif;">Ade Afwa Boutique</p>
-                            <p class="text-xs text-gray-500 mt-2 text-center md:text-left max-w-sm">Koleksi pakaian elegan dengan kualitas terbaik untuk menemani momen spesial Anda.</p>
+                            <p class="text-xs text-gray-500 mt-2 text-center md:text-left max-w-sm">Cantik Sederhana Elegan</p>
                         </div>
                         
                         <!-- Store Information -->
@@ -54,7 +54,7 @@
                                 </li>
                                 <li class="flex items-center gap-3">
                                     <span class="text-base">📞</span>
-                                    <span>0877-2901-5880</span>
+                                    <span>+6287862331538</span>
                                 </li>
                                 <li class="flex items-center gap-3">
                                     <span class="text-base">🕒</span>
@@ -65,9 +65,6 @@
 
                     </div>
 
-                    <div class="text-center pt-8 border-t border-gray-200">
-                        <p class="text-gray-400 text-[10px] uppercase tracking-[0.3em]">© 2026 Ade Afwa Boutique. Dibuat dengan ❤️ oleh Kelompok 5 Informatika UINSSC.</p>
-                    </div>
                 </div>
             </footer>
         </div>

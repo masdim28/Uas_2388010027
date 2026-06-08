@@ -46,7 +46,7 @@
                 <label for="phone" class="block text-sm font-black text-indigo-950 uppercase tracking-wider">Nomor WhatsApp</label>
                 <input type="text" id="phone" name="phone" value="{{ old('phone') }}"
                        class="w-full bg-[#F1FBFD]/50 px-6 py-4 rounded-2xl border border-indigo-50 focus:ring-2 focus:ring-[#CFB53B] focus:border-transparent outline-none transition-all text-sm font-bold text-indigo-950 placeholder-indigo-200"
-                       placeholder="Contoh: 081234567890">
+                       placeholder="Contoh: +6281234567890">
                 <p class="text-[10px] text-indigo-300 font-bold italic">*Opsional, gunakan format angka</p>
             </div>
 

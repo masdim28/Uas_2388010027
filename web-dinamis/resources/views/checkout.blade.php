@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Checkout - Ade Afwa Boutique</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -94,7 +93,11 @@
                                 <input type="text"
                                        name="phone"
                                        required
-                                       placeholder="08xxxxxxxxxx"
+                                       value="+62"
+                                       oninput="let v=this.value.replace(/[^0-9+]/g,''); if(v.startsWith('0')) v='+62'+v.substring(1); if(!v.startsWith('+62')) v='+62'; this.value=v;"
+                                       placeholder="Contoh: +628xxxxxxxxxx"
+                                       pattern="^\+62[0-9]{8,13}$"
+                                       title="Nomor telepon harus diawali dengan +62"
                                        class="w-full p-3 border border-gray-300 rounded-lg text-xs outline-none focus:ring-2 focus:ring-[#CFB53B]">
                             </div>
 
@@ -324,8 +327,8 @@
                                 </option>
 
                                 <option value="jne">JNE</option>
-                                <option value="pos">POS Indonesia</option>
                                 <option value="jnt">J&T Express</option>
+                                <option value="pos">POS Indonesia</option>
 
                             </select>
 
@@ -425,7 +428,7 @@
                 <div class="flex flex-col items-center md:items-start">
                     <img src="{{ asset('images/logo_adeafwa.png') }}" alt="Logo" class="h-12 mb-4">
                     <p class="text-sm text-gray-700 font-serif-ade font-bold tracking-wider uppercase">Ade Afwa Boutique</p>
-                    <p class="text-xs text-gray-500 mt-2 text-center md:text-left max-w-sm">Koleksi pakaian elegan dengan kualitas terbaik untuk menemani momen spesial Anda.</p>
+                    <p class="text-xs text-gray-500 mt-2 text-center md:text-left max-w-sm">Cantik Sederhana Elegan</p>
                 </div>
                 
                 <!-- Store Information -->
@@ -442,7 +445,7 @@
                         </li>
                         <li class="flex items-center gap-3">
                             <span class="text-base">📞</span>
-                            <span>0877-2901-5880</span>
+                            <span>+6287862331538</span>
                         </li>
                         <li class="flex items-center gap-3">
                             <span class="text-base">🕒</span>
@@ -453,9 +456,6 @@
 
             </div>
 
-            <div class="text-center pt-8 border-t border-gray-200">
-                <p class="text-gray-400 text-[10px] uppercase tracking-[0.3em]">© 2026 Ade Afwa Boutique. Dibuat dengan ❤️ oleh Kelompok 5 Informatika UINSSC.</p>
-            </div>
         </div>
     </footer>
 
@@ -463,13 +463,6 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <script>
-
-        // Setup CSRF token for all AJAX requests
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
 
         // Concatenate address inputs to details text area
         function combineAddressDetails() {
@@ -568,14 +561,9 @@
 
                 error: function(xhr) {
                     $('#search-loading').addClass('hidden').removeClass('flex');
-                    console.error('Error search destination:', xhr.status, xhr.responseText);
-                    let errDetail = 'Gagal mencari lokasi. Coba lagi.';
-                    try {
-                        let errJson = JSON.parse(xhr.responseText);
-                        if (errJson.meta && errJson.meta.message) errDetail = errJson.meta.message;
-                    } catch(e) {}
+                    console.error('Error search destination:', xhr.responseText);
                     $('#destination-results')
-                        .html('<div class="px-4 py-3 text-xs text-red-400 text-center">⚠️ ' + errDetail + '</div>')
+                        .html('<div class="px-4 py-3 text-xs text-red-400 text-center">⚠️ Gagal mencari lokasi. Coba lagi.</div>')
                         .removeClass('hidden');
                 }
             });
@@ -666,16 +654,18 @@
 
                         let html = '<option value="">-- Pilih Layanan --</option>';
 
+                        let courierName = $('#courier-select option:selected').text().trim();
+
                         services.forEach(item => {
-                            // Field: name, code, service, description, cost, etd
                             let name  = item.name  ?? '';
                             let svc   = item.service ?? '';
                             let desc  = item.description ?? '';
                             let cost  = item.cost ?? 0;
                             let etd   = item.etd ? (' - ETD ' + item.etd + ' hari') : '';
                             let label = name + ' (' + svc + ' - ' + desc + ')' + etd + ' — Rp ' + cost.toLocaleString('id-ID');
+                            let savedValue = courierName + ' - ' + svc;
 
-                            html += `<option value="${svc}" data-cost="${cost}">${label}</option>`;
+                            html += `<option value="${savedValue}" data-cost="${cost}">${label}</option>`;
                         });
 
                         $('#service-select').html(html);
@@ -689,13 +679,8 @@
                 error: function(xhr) {
                     console.error('[Ongkir] Error:', xhr.status, xhr.responseText);
                     $('#btn-hitung-ongkir').prop('disabled', false).text('Hitung Ongkir');
-                    let errMsg = 'Gagal menghitung ongkir.';
-                    try {
-                        let errJson = JSON.parse(xhr.responseText);
-                        if (errJson.meta && errJson.meta.message) errMsg = errJson.meta.message;
-                    } catch(e) {}
-                    $('#service-select').html('<option value="">⚠️ ' + errMsg + '</option>');
-                    alert(errMsg + ' Periksa koneksi internet Anda.');
+                    $('#service-select').html('<option value="">⚠️ Gagal menghitung ongkir.</option>');
+                    alert('Gagal menghitung ongkir. Periksa koneksi internet Anda.');
                 }
             });
         }

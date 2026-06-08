@@ -71,7 +71,7 @@
 
                         <div>
                             <label for="phone" class="block text-sm font-medium text-gray-700 mb-1.5">No. HP / WhatsApp (Aktif)</label>
-                            <input type="tel" id="phone" name="phone" required value="{{ old('phone') }}" placeholder="Contoh: 08123456789" class="ade-input">
+                            <input type="tel" id="phone" name="phone" required value="{{ old('phone', '+62') }}" oninput="let v=this.value.replace(/[^0-9+]/g,''); if(v.startsWith('0')) v='+62'+v.substring(1); if(!v.startsWith('+62')) v='+62'; this.value=v;" placeholder="Contoh: +628123456789" pattern="^\+62[0-9]{8,13}$" title="Nomor telepon harus diawali dengan +62" class="ade-input">
                         </div>
 
                         <div>
@@ -314,7 +314,7 @@
                 
                 if (checked) {
                     registerBtn.removeAttribute('disabled');
-                    registerBtn.className = "w-full md:w-auto md:px-12 bg-ade-afwa-gold text-white py-4 rounded-xl font-bold text-lg hover:bg-yellow-600 transition shadow-lg flex justify-center items-center gap-2 cursor-pointer";
+                    registerBtn.className = "w-full md:w-auto md:px-12 bg-ade-afwa-gold text-gray-900 py-4 rounded-xl font-bold text-lg hover:bg-yellow-600 hover:text-white transition shadow-lg flex justify-center items-center gap-2 cursor-pointer";
                 } else {
                     registerBtn.setAttribute('disabled', 'true');
                     registerBtn.className = "w-full md:w-auto md:px-12 bg-gray-300 text-gray-500 py-4 rounded-xl font-bold text-lg transition flex justify-center items-center gap-2 cursor-not-allowed";

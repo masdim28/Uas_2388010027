@@ -73,18 +73,10 @@ class CheckoutController extends Controller
     {
         try {
 
-            $baseUrl = config('services.komerce.base_url');
-            $apiKey  = config('services.komerce.api_key');
-
-            \Log::info('[Komerce] Search Destination', [
-                'search'   => $request->search,
-                'base_url' => $baseUrl,
-            ]);
-
             $response = Http::withoutVerifying()->withHeaders([
-                'key' => $apiKey
+                'key' => env('KOMERCE_API_KEY')
             ])->get(
-                $baseUrl . '/destination/domestic-destination',
+                env('KOMERCE_BASE_URL') . '/destination/domestic-destination',
                 [
                     'search' => $request->search,
                     'limit'  => 10,
@@ -92,20 +84,10 @@ class CheckoutController extends Controller
                 ]
             );
 
-            \Log::info('[Komerce] Search Destination Response', [
-                'status' => $response->status(),
-                'body'   => $response->json(),
-            ]);
-
             // Return langsung JSON dari Komerce: { meta: {...}, data: [...] }
             return response()->json($response->json());
 
         } catch (\Exception $e) {
-
-            \Log::error('[Komerce] Search Destination Error', [
-                'message' => $e->getMessage(),
-                'trace'   => $e->getTraceAsString(),
-            ]);
 
             return response()->json([
                 'meta' => ['status' => 'error', 'message' => $e->getMessage()],
@@ -119,53 +101,42 @@ class CheckoutController extends Controller
     /* -------------------------------------------------------------------------- */
 
     public function checkOngkir(Request $request)
-    {
-        try {
+{
+    try {
 
-            $baseUrl     = config('services.komerce.base_url');
-            $apiKey      = config('services.komerce.api_key');
-            $origin      = config('services.komerce.origin');
+        $response = Http::withoutVerifying()->asForm()->withHeaders([
+            'key' => env('KOMERCE_API_KEY')
+        ])->post(
+            env('KOMERCE_BASE_URL') . '/calculate/domestic-cost',
+            [
 
-            $payload = [
-                'origin'      => intval($origin),
+                'origin' => intval(env('KOMERCE_ORIGIN')),
+
                 'destination' => intval($request->destination),
-                'weight'      => intval($request->weight),
-                'courier'     => strtolower($request->courier),
-            ];
 
-            \Log::info('[Komerce] Check Ongkir Request', $payload);
+                'weight' => intval($request->weight),
 
-            $response = Http::withoutVerifying()->asForm()->withHeaders([
-                'key' => $apiKey
-            ])->post(
-                $baseUrl . '/calculate/domestic-cost',
-                $payload
-            );
+                'courier' => strtolower($request->courier),
 
-            \Log::info('[Komerce] Check Ongkir Response', [
-                'status' => $response->status(),
-                'body'   => $response->json(),
-            ]);
+                'price' => 'lowest'
 
-            return response()->json(
-                $response->json()
-            );
+            ]
+        );
 
-        } catch (\Exception $e) {
+        return response()->json(
+            $response->json()
+        );
 
-            \Log::error('[Komerce] Check Ongkir Error', [
-                'message' => $e->getMessage(),
-                'trace'   => $e->getTraceAsString(),
-            ]);
+    } catch (\Exception $e) {
 
-            return response()->json([
-                'meta' => [
-                    'status' => 'error',
-                    'message' => $e->getMessage()
-                ]
-            ], 500);
-        }
+        return response()->json([
+            'meta' => [
+                'status' => 'error',
+                'message' => $e->getMessage()
+            ]
+        ], 500);
     }
+}
 
     /* -------------------------------------------------------------------------- */
     /* PROSES CHECKOUT                                                            */

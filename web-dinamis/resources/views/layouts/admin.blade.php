@@ -6,14 +6,23 @@
     <title>Admin | Ade Afwa Boutique</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         body { font-family: 'Inter', sans-serif; }
         .font-serif { font-family: 'Playfair Display', serif; }
     </style>
 </head>
-<body class="bg-[#F1FBFD] flex">
+<body class="bg-[#F1FBFD] flex" x-data="{ sidebarOpen: false }">
 
-    <aside class="w-64 bg-[#F5F5E4] min-h-screen text-indigo-950 p-6 hidden md:block sticky top-0 h-screen shadow-[5px_0_15px_rgba(0,0,0,0.05)] border-r border-gray-200 z-20">
+    <!-- Overlay Mobile -->
+    <div x-show="sidebarOpen" 
+         style="display: none;" 
+         class="fixed inset-0 bg-black/50 z-30 md:hidden" 
+         @click="sidebarOpen = false" 
+         x-transition.opacity></div>
+
+    <aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'" 
+           class="fixed md:static inset-y-0 left-0 w-64 bg-[#F5F5E4] min-h-screen text-indigo-950 p-6 transform md:translate-x-0 transition-transform duration-300 shadow-[5px_0_15px_rgba(0,0,0,0.05)] border-r border-gray-200 z-40 overflow-y-auto">
         <div class="mb-10 text-center">
             <h2 class="text-2xl font-black tracking-[0.15em] italic font-serif text-[#CFB53B]">ADE AFWA</h2>
             <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-1">Official Dashboard</p>
@@ -89,15 +98,20 @@
         </nav>
     </aside>
 
-    <div class="flex-1 flex flex-col min-h-screen relative">
+    <div class="flex-1 flex flex-col min-w-0 min-h-screen relative">
         
-        <header class="bg-[#F5F5E4] p-8 shadow-sm border-b border-gray-200 sticky top-0 z-10">
-            <div class="flex justify-between items-center">
-                <div>
-                    <h1 class="text-3xl font-black text-indigo-950 italic font-serif tracking-tight uppercase">{{ $header ?? 'Dashboard' }}</h1>
-                    <div class="flex items-center gap-2 mt-1">
-                        <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.5)]"></span>
-                        <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest">Sistem Manajemen Butik</p>
+        <header class="bg-[#F5F5E4] p-4 md:p-8 shadow-sm border-b border-gray-200 sticky top-0 z-10">
+            <div class="flex justify-between items-center gap-4">
+                <div class="flex items-center gap-4">
+                    <button @click="sidebarOpen = true" class="md:hidden text-indigo-950 p-2 focus:outline-none hover:bg-indigo-950/5 rounded-lg transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    </button>
+                    <div>
+                        <h1 class="text-xl md:text-3xl font-black text-indigo-950 italic font-serif tracking-tight uppercase line-clamp-1">{{ $header ?? 'Dashboard' }}</h1>
+                        <div class="flex items-center gap-2 mt-1">
+                            <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.5)]"></span>
+                            <p class="text-gray-500 text-[10px] font-bold uppercase tracking-widest hidden sm:block">Sistem Manajemen Butik</p>
+                        </div>
                     </div>
                 </div>
 
