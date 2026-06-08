@@ -22,7 +22,7 @@
          x-transition.opacity></div>
 
     <aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'" 
-           class="fixed md:static inset-y-0 left-0 w-64 bg-[#F5F5E4] min-h-screen text-indigo-950 p-6 transform md:translate-x-0 transition-transform duration-300 shadow-[5px_0_15px_rgba(0,0,0,0.05)] border-r border-gray-200 z-40 overflow-y-auto">
+           class="fixed md:sticky md:top-0 inset-y-0 left-0 w-64 bg-[#F5F5E4] h-screen text-indigo-950 p-6 transform md:translate-x-0 transition-transform duration-300 shadow-[5px_0_15px_rgba(0,0,0,0.05)] border-r border-gray-200 z-40 overflow-y-auto">
         <div class="mb-10 text-center">
             <h2 class="text-2xl font-black tracking-[0.15em] italic font-serif text-[#CFB53B]">ADE AFWA</h2>
             <p class="text-[9px] text-gray-500 uppercase tracking-widest mt-1">Official Dashboard</p>
